@@ -36,6 +36,7 @@ def boar_brawl(player_score, opponent_score):
     """
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    return abs(opponent_score // 10 % 10 - player_score % 10) * 3 or 1
     # END PROBLEM 2
 
 
@@ -54,6 +55,7 @@ def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
     assert num_rolls <= 10, 'Cannot roll more than 10 dice.'
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    return boar_brawl(player_score, opponent_score) if num_rolls == 0 else roll_dice(num_rolls, dice)
     # END PROBLEM 3
 
 
