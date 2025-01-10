@@ -1,0 +1,6 @@
+'digit-correct', (0, 70)
+'middle-correct', (512, 70)
+'falling-correct', (1024, 70)
+'divisible_by_k-correct', (1536, 70)
+'sum_digits-correct', (2048, 70)
+'double_eights-correct', (2560, 70)
