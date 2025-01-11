@@ -217,6 +217,7 @@ def is_always_roll(strategy, goal=GOAL):
     """
     # BEGIN PROBLEM 7
     "*** YOUR CODE HERE ***"
+    return len(set(strategy(x, y) for x in range(goal) for y in range(goal - 1, -1, -1))) == 1
     # END PROBLEM 7
 
 
