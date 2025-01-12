@@ -305,7 +305,7 @@ def boar_strategy(score, opponent_score, threshold=11, num_rolls=6):
     points, and returns NUM_ROLLS otherwise. Ignore score and Sus Fuss.
     """
     # BEGIN PROBLEM 10
-    return num_rolls  # Remove this line once implemented.
+    return 0 if boar_brawl(score, opponent_score) >= threshold else num_rolls  # Remove this line once implemented.
     # END PROBLEM 10
 
 
