@@ -234,6 +234,12 @@ def make_averaged(original_function, times_called=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    def avg(*agrs):
+        sum = 0
+        for _ in range(times_called):
+            sum += original_function(*agrs)
+        return sum / times_called
+    return avg
     # END PROBLEM 8
 
 
