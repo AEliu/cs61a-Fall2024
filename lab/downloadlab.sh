@@ -13,7 +13,7 @@ for i in $(seq -w 3 12); do
     if [ -f "lab${i}.zip" ]; then
         # 解压文件
         echo "Unzipping lab${i}.zip..."
-        unzip "lab${i}.zip" -d "lab${i}"
+        unzip "lab${i}.zip"
         
         # 删除原始的 ZIP 文件（可选）
         rm "lab${i}.zip"
