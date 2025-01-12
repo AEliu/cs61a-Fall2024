@@ -61,7 +61,17 @@ def count_cond(condition):
     8
     """
     "*** YOUR CODE HERE ***"
-    
+    return lambda n: len([1 for i in range(1, n+1) if condition(n, i)])
+    # def count_func(n):
+    #     i  = 1
+    #     count = 0
+    #     while i <= n:
+    #         if condition(n, i):
+    #             count += 1
+    #         i += 1
+    #     return count
+    # return count_func
+
 
 
 def multiple(a, b):
@@ -73,6 +83,8 @@ def multiple(a, b):
     42
     """
     "*** YOUR CODE HERE ***"
+    import math
+    return math.lcm(a, b)
 
 
 
@@ -103,4 +115,15 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
+    func_list = [f1, f2, f3]
+    def cycle_func(n):
+        def func(x):
+            if n == 0:
+                return x
+            for i in range(n):
+                current_f = func_list[i % 3]
+                x = current_f(x)
+            return x
+        return func
+    return cycle_func
 
