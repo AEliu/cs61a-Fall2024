@@ -83,15 +83,15 @@ def interleaved_sum(n, odd_func, even_func):
     True
     """
     "*** YOUR CODE HERE ***"
-    k = 1
-    def inner_sum(k, n, odd_func, even_func):
+    def inner_sum(k, odd_func, even_func):
         if k <= n:
-            k += 1
-            return odd_func(1) 
-        
-    if n == k:
-        return odd_func(1)
-    return 
+            if k + 1 > n:
+                return odd_func(k)
+            else:
+                return odd_func(k) + even_func(k + 1) + inner_sum(k + 2, odd_func, even_func)
+        return 0
+    
+    return inner_sum(1, odd_func, even_func)
         
 
 
