@@ -175,15 +175,16 @@ def count_dollars_upward(total):
     True
     """
     "*** YOUR CODE HERE ***"
-    def count_partitions(total, bill):
+    def count_partitions(total, smallest_bill):
         if total == 0:
             return 1
         elif total < 0:
             return 0
-        elif bill == 1:
-            return 1
+        elif smallest_bill >= 100 or smallest_bill > total:
+            return 1 if total % smallest_bill == 0 else 0
         else:
-            return count_partitions(total)
+            return count_partitions(total - smallest_bill, smallest_bill) + count_partitions(total, next_larger_dollar(smallest_bill))
+    return count_partitions(total, 1)
 
 
 
@@ -245,7 +246,16 @@ def make_anonymous_factorial():
     True
     """
     # return lambda n: 1 if n == 1 else lambda n : mul(n, sub(n, 1))
-    return lambda n: 1 if n == 1 else mul(n, sub(n, 1))
+    # return lambda n : (1 if n == 1 else mul(fact(sub(n, 1)), n))
+    # fact = lambda n: 1 if n == 1 else mul(n, fact(sub(n, 1)))
+    return (lambda f: lambda n: f(f, n))(lambda f, n: \
+                                         1 
+                                         if n == 1 
+                                         else mul(n, f(f, sub(n, 1))))
+    # f is a function with two arguments: f and n, it's mess
+    # how to use call expressions ?
+
+
     # return 'YOUR_EXPRESSION_HERE'
 
 
