@@ -129,6 +129,16 @@ def count_dollars(total):
     True
     """
     "*** YOUR CODE HERE ***"
+    def count_partitions(total, bill):
+        if total == 0:
+            return 1
+        elif total < 0:
+            return 0
+        elif bill == 1:
+            return 1
+        else:
+            return count_partitions(total - bill, bill) + count_partitions(total, next_smaller_dollar(bill))
+    return count_partitions(total, 100)
 
 
 def next_larger_dollar(bill):
@@ -165,6 +175,16 @@ def count_dollars_upward(total):
     True
     """
     "*** YOUR CODE HERE ***"
+    def count_partitions(total, bill):
+        if total == 0:
+            return 1
+        elif total < 0:
+            return 0
+        elif bill == 1:
+            return 1
+        else:
+            return count_partitions(total)
+
 
 
 def print_move(origin, destination):
@@ -200,6 +220,15 @@ def move_stack(n, start, end):
     """
     assert 1 <= start <= 3 and 1 <= end <= 3 and start != end, "Bad start/end"
     "*** YOUR CODE HERE ***"
+    def move_stack_with_mid(n, start, mid, end):
+        if n == 1:
+            print_move(start, end)
+        else:
+            move_stack_with_mid(n - 1, start, end,mid)
+            move_stack_with_mid(1, start, mid, end)
+            move_stack_with_mid(n - 1, mid, start, end)
+    move_stack_with_mid(n, 1, 2, 3)
+
 
 
 from operator import sub, mul
@@ -215,5 +244,8 @@ def make_anonymous_factorial():
     ...     ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr', 'FunctionDef', 'Recursion'])
     True
     """
-    return 'YOUR_EXPRESSION_HERE'
+    # return lambda n: 1 if n == 1 else lambda n : mul(n, sub(n, 1))
+    return lambda n: 1 if n == 1 else mul(n, sub(n, 1))
+    # return 'YOUR_EXPRESSION_HERE'
+
 
