@@ -1,5 +1,7 @@
 # 匿名的递归函数 – Q7: Anonymous Factorial
 
+## 问题
+
 CS61A 2024 Fall 课程的 hw03 有这样一道题，Q7: [Anonymous Factorial](https://cs61a.org/hw/hw03/#q7-anonymous-factorial) ，要求用匿名的方式写递归函数计算阶乘，不能用 `def` 或赋值的方式来给函数命名，用一行代码实现这个功能，题目如下。
 
 ```python
@@ -19,6 +21,8 @@ def make_anonymous_factorial():
     return 'YOUR_EXPRESSION_HERE'
 ```
 
+## 提示
+
 题目也给出了提示：
 
 ```python
@@ -28,6 +32,8 @@ def make_anonymous_factorial():
 ```
 
 提示中 lambda 函数赋给 fact，在函数体中再次调用 fact，实现递归。
+
+## 返回函数的函数
 
 根据题目，调用函数 `make_anonymous_factorial` 会返回一个新的函数，这个函数接收一个整数作为参数，计算这个参数的阶乘值。也就是说，函数 `make_anonymous_factorial` 的返回值也是一个函数，这个返回的函数以整数为参数。假设这个返回的函数是f，则函数内类似如下：
 
@@ -53,6 +59,8 @@ lambda f, n: n * f(n - 1)
 ```python
 lambda f, n: 1 if n == 1 else n * f(f, n - 1)
 ```
+
+## Currying
 
 现在就出现问题了，一个是函数有两个参数，而调用函数 `make_anonymous_factorial` 会返回的函数只有一个参数，另一个问题是，这个匿名函数传递进入函数。配套教材介绍了 [Currying](https://www.composingprograms.com/pages/16-higher-order-functions.html#currying) 这个东西，可以将一个有多参数的函数转换成单参数函数的函数链，如下面介绍的例子
 
@@ -80,6 +88,8 @@ lambda x: lambda y: x ** y
 8
 ```
 
+## 完整实现
+
 可以利用这项功能，将构造类似的函数，将函数 `lambda f, n: 1 if n == 1 else n * f(f, n - 1)` 作为参数（类似上面代码中 2 的位置）传递进去，这样返回一个以 `n` 为参数的函数，来实现递归，完整的实现如下：
 
 ```python
@@ -101,6 +111,8 @@ def make_anonymous_factorial():
                                          if n == 1 
                                          else mul(n, f(f, sub(n, 1))))
 ```
+
+## 计算斐波那契数列
 
 我们还可以利用这个原理来计算[斐波那契数列](https://zh.wikipedia.org/wiki/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0)
 
