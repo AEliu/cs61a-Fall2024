@@ -245,17 +245,10 @@ def make_anonymous_factorial():
     ...     ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr', 'FunctionDef', 'Recursion'])
     True
     """
-    # return lambda n: 1 if n == 1 else lambda n : mul(n, sub(n, 1))
-    # return lambda n : (1 if n == 1 else mul(fact(sub(n, 1)), n))
-    # fact = lambda n: 1 if n == 1 else mul(n, fact(sub(n, 1)))
     return (lambda f: lambda n: f(f, n))(lambda f, n: \
                                          1 
                                          if n == 1 
                                          else mul(n, f(f, sub(n, 1))))
     # f is a function with two arguments: f and n, it's mess
     # how to use call expressions ?
-
-
-    # return 'YOUR_EXPRESSION_HERE'
-
 
