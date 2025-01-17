@@ -37,7 +37,7 @@ def pick(paragraphs, select, k):
     ''
     """
     # BEGIN PROBLEM 1
-    "*** YOUR CODE HERE ***"
+    # "*** YOUR CODE HERE ***"
     to_pick =  [i for i in paragraphs if select(i)]
     return '' if len(to_pick) <= k else to_pick[k]
     # END PROBLEM 1
@@ -59,8 +59,8 @@ def about(subject):
     assert all([lower(x) == x for x in subject]), "subjects should be lowercase."
 
     # BEGIN PROBLEM 2
-    "*** YOUR CODE HERE ***"
-    return lambda p: 
+    # "*** YOUR CODE HERE ***"
+    return lambda paragraph: any([lower(remove_punctuation(word)) in subject for word in split(paragraph)])
     # END PROBLEM 2
 
 
@@ -90,7 +90,13 @@ def accuracy(typed, source):
     typed_words = split(typed)
     source_words = split(source)
     # BEGIN PROBLEM 3
-    "*** YOUR CODE HERE ***"
+    # "*** YOUR CODE HERE ***"
+    if typed_words == source_words:
+        return 100.0
+    elif typed == '':
+        return 0.0
+    else:
+        return sum([int(t == s) for t, s in zip(typed_words, source_words)])/len(typed_words) * 100
     # END PROBLEM 3
 
 
@@ -108,7 +114,9 @@ def wpm(typed, elapsed):
     """
     assert elapsed > 0, "Elapsed time must be positive"
     # BEGIN PROBLEM 4
-    "*** YOUR CODE HERE ***"
+    # "*** YOUR CODE HERE ***"python3 cats_gui.py
+
+    return len(typed) / 5 * 60 / elapsed
     # END PROBLEM 4
 
 
