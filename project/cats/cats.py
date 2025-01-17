@@ -178,6 +178,13 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     """
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    if typed_word in word_list:
+        return typed_word
+    w = min(word_list, key=lambda i : diff_function(typed_word, i, limit))
+    if diff_function(typed_word, w, limit) > limit:
+        return typed_word
+    return w
+    # return w := min(word_list, key=lambda i : diff_function(typed_word, i, limit)) if diff_function(typed_word, w, limit) <= limit else typed_word
     # END PROBLEM 5
 
 
