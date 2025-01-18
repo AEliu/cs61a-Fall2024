@@ -302,7 +302,19 @@ def report_progress(typed, source, user_id, upload):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    progress_index = 0
+    for i in range(min(len(typed), len(source) )):
+        if typed[i] != source[i]:
+            progress_index = i
+            break
+        else:
+            progress_index = i + 1
 
+    upload({
+        'id': user_id,
+        'progress': progress_index / len(source)
+    })
+    return progress_index / len(source)
     # END PROBLEM 8
 
 
@@ -326,7 +338,8 @@ def time_per_word(words, timestamps_per_player):
     """
     tpp = timestamps_per_player  # A shorter name (for convenience)
     # BEGIN PROBLEM 9
-    times = []  # You may remove this line
+    times = [[y - x for x, y in  zip(row[:-1], row[1:])] for row in tpp]  # You may remove this line
+    # 利用 zip 讲列表前后的元素对应起来
     # END PROBLEM 9
     return {'words': words, 'times': times}
 
