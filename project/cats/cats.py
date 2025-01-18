@@ -259,7 +259,7 @@ def minimum_mewtations(typed, source, limit):
         return minimum_mewtations(typed[1:], source[1:], limit)
         # END
     else:
-        add = 1 + minimum_mewtations(source[0] + typed, source, limit - 1) # Fill in these lines
+        add = 1 + minimum_mewtations(typed, source[1:], limit - 1) # Fill in these lines
         remove = 1 + minimum_mewtations(typed[1:], source, limit - 1)
         substitute = 1 + minimum_mewtations(typed[1:], source[1:], limit - 1)
         # BEGIN
