@@ -8,4 +8,4 @@ My homework, lab, project, and notes for CS 61A Fall 2024.
 
 ## Project
 
-[单词转换 minimum mewtations](./notes/minimum_mewtations.md)
+[cat - 单词转换 minimum mewtations](./notes/minimum_mewtations.md)
