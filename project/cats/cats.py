@@ -367,6 +367,13 @@ def fastest_words(words_and_times):
     word_indices = range(len(words))    # contains an *index* for each word
     # BEGIN PROBLEM 10
     "*** YOUR CODE HERE ***"
+    result = [[]  for _ in player_indices]
+    
+    for word in word_indices:
+        fastest_player = min(player_indices, key=lambda i: get_time(times, i, word))
+        # min 如果有多个最小元素，则此函数将返回第一个找到的
+        result[fastest_player].append(words[word])
+    return result
     # END PROBLEM 10
 
 
