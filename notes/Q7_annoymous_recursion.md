@@ -105,7 +105,7 @@ return inner_fact(f)
 lambda f : lambda n: f(f, n)
 ```
 
-调用这个函数，参数为 `lambda f, n: 1 if n == 1 else n * f(f, n - 1)`:
+将其放在 `()` 里，作为一个整体的函数来调用，其参数为上述的函数： `lambda f, n: 1 if n == 1 else n * f(f, n - 1)`。
 
 ```python
 (lambda f : lambda n: f(f, n))(lambda f, n: 1 if n == 1 else n * f(f, n - 1))
