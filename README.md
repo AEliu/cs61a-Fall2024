@@ -8,6 +8,10 @@ My homework, lab, project, and notes for CS 61A Fall 2024.
 
 [HW04](./notes/hw04.md)
 
+## Lab
+
+[Lab 5: Mutability, Iterators](./notes/lab05.md)
+
 ## Project
 
 [cat - 单词转换 minimum mewtations](./notes/minimum_mewtations.md)
