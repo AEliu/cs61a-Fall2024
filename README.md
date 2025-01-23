@@ -8,6 +8,8 @@ My homework, lab, project, and notes for CS 61A Fall 2024.
 
 [HW04](./notes/hw04.md)
 
+[HW05](./notes/hw05.md)
+
 ## Lab
 
 [Lab 5: Mutability, Iterators](./notes/lab05.md)
