@@ -178,6 +178,12 @@ def two_list(vals, counts):
     Link(1, Link(1, Link(3, Link(3, Link(2)))))
     """
     "*** YOUR CODE HERE ***"
+    if counts[0] == 1:
+        if len(counts) == 1:
+            return Link(vals[0])
+        return Link(vals[0], two_list(vals[1:], counts[1:]))
+    return Link(vals[0], two_list(vals, [counts[0] - 1] + counts[1:]))
+    # 如何用循环的方式呢？以后再说吧。
 
 
 class Link:
