@@ -121,6 +121,14 @@ def duplicate_link(s, val):
     Link(1, Link(2, Link(2, Link(2, Link(2, Link(3))))))
     """
     "*** YOUR CODE HERE ***"
+    point2Link = s
+    while point2Link is not Link.empty:
+        if point2Link.first == val:
+            tempLink = Link(val, point2Link.rest)
+            point2Link.rest = tempLink
+            point2Link = tempLink.rest
+        else:
+            point2Link = point2Link.rest
 
 
 class Link:
