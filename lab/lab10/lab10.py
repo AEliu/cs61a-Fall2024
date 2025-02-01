@@ -15,6 +15,7 @@ def calc_eval(exp):
     >>> calc_eval(Pair("+", Pair(1, Pair(2, nil))))
     3
     """
+    print("DEBUG:", exp) 
     if isinstance(exp, Pair):
         operator = exp.first  # UPDATE THIS FOR Q2, e.g (+ 1 2), + is the operator
         operands = exp.rest  # UPDATE THIS FOR Q2, e.g (+ 1 2), 1 and 2 are operands
@@ -30,11 +31,12 @@ def calc_eval(exp):
         return OPERATORS[exp]
     elif isinstance(exp, int) or isinstance(exp, bool):  # Numbers and booleans
         return exp
-    elif _________________:  # CHANGE THIS CONDITION FOR Q4 where are variables stored?
-        return _________________  # UPDATE THIS FOR Q4, how do you access a variable?
+    elif exp in bindings.keys():  # CHANGE THIS CONDITION FOR Q4 where are variables stored?
+        return bindings.get(exp)  # UPDATE THIS FOR Q4, how do you access a variable?
 
 
 def calc_apply(op, args):
+    print("DEBUG:", args) 
     return op(args)
 
 
@@ -60,16 +62,11 @@ def floor_div(args):
     "*** YOUR CODE HERE ***"
     fisrt = args.first
     rest = args.rest
-    # result = 1
-    # # if rest.rest is nil:
-    # #     return fisrt // rest.first
-    # while isinstance(rest.first, int):
-    #     fisrt = fisrt // rest.first
-    #     rest = rest.rest
-    #     if rest is nil:
-    #         return fisrt
-
-    return calc_eval(fisrt) // calc_eval(rest)
+ 
+    while rest is not nil:
+        fisrt = fisrt // rest.first
+        rest = rest.rest
+    return fisrt
 
 
 scheme_t = True  # Scheme's #t
@@ -94,6 +91,16 @@ def eval_and(expressions):
     True
     """
     "*** YOUR CODE HERE ***"
+    if expressions is nil:
+        return True
+    if expressions.rest is nil:
+        return calc_eval(expressions.first)
+    if expressions.first is scheme_f:
+        return False
+    # Pair(1, Pair(Pair('//', Pair(5, Pair(2, nil))), nil))
+    return eval_and(expressions.rest)
+    
+    
 
 
 bindings = {}
@@ -115,6 +122,8 @@ def eval_define(expressions):
     2
     """
     "*** YOUR CODE HERE ***"
+    bindings[expressions.first] = calc_eval(expressions.rest.first)
+    return expressions.first
 
 
 OPERATORS = {
