@@ -45,6 +45,7 @@ def scheme_apply(procedure, args, env):
     if isinstance(procedure, BuiltinProcedure):
         # BEGIN PROBLEM 2
         "*** YOUR CODE HERE ***"
+        
         # END PROBLEM 2
         try:
             # BEGIN PROBLEM 2
